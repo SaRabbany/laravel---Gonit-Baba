@@ -14,6 +14,8 @@
 
         <link rel="icon" href="image/logo.svg" type="image/png">
     <link rel="stylesheet" href="{{ asset('css/index.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/home.css') }}" type="text/css">
+
     <title>Math_baba</title>
 </head>
 
@@ -28,10 +30,10 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav align-items-center ms-auto">
-                    <a class="nav-link active-color" aria-current="page" href="#">Home</a>
+                    <a class="nav-link active-color" aria-current="page" href="">Home</a>
                     <a class="nav-link" href="#">Features</a>
                     <a class="nav-link" href="#">Offers</a>
-                    <a class="nav-link">Question List</a>
+                    <a class="nav-link" href="">Question List</a>
                     <a class="nav-link">New Questions</a>
                     <a class="nav-link"><input placeholder="Search your math answer here?" class="form-control me-2"
                             type="text"></a>
@@ -42,7 +44,7 @@
     </nav>
 
 
-     
+
 
      @yield('content')
 
