@@ -35,10 +35,9 @@
 
                             <div class="form-group">
                             <label for="sel1">Select category</label>
-                            <select class="form-control" id="category" name="category[]" >
+                            <select class="form-control" id="category" name="category[]" required title="Chose Category">
 
-                                    <option disabled selected>Please Chose Categories</option>
-
+                                    <option disabled selected value> Please Chose Category</option>
                                 @foreach ($categories as $category)
                                 <option value="{{ $category->id }}"> {{ $category->name }}</option>
                                 @endforeach

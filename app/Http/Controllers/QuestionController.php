@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\category;
 use App\Models\question;
+use App\Models\questionHasCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -54,6 +55,8 @@ class QuestionController extends Controller
     public function store(Request $request)
     {
 
+        return $request;
+
 
         $request->validate([
             'title' => 'required',
@@ -86,7 +89,14 @@ class QuestionController extends Controller
 
        $question->title = $request->title;
        $question->description = $request->description;
-       $question->category_id = json_encode($request->category);
+
+        foreach ($request->category as $category) {
+            $questionHasCategory = new questionHasCategory;
+            $questionHasCategory->question_id = $question->id;
+            $questionHasCategory->category_id = $category->id;
+            $questionHasCategory->save();
+        }
+
 
 
        $question->save();
