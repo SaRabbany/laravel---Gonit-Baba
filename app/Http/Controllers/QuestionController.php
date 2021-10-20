@@ -55,8 +55,6 @@ class QuestionController extends Controller
     public function store(Request $request)
     {
 
-        return $request;
-
 
         $request->validate([
             'title' => 'required',
@@ -90,10 +88,16 @@ class QuestionController extends Controller
        $question->title = $request->title;
        $question->description = $request->description;
 
-        foreach ($request->category as $category) {
+       $allCategories = $request->category;
+
+        return $allCategories;
+        foreach ($allCategories as $singleCategory) {
+
+           dd(gettype($singleCategory));
+
             $questionHasCategory = new questionHasCategory;
             $questionHasCategory->question_id = $question->id;
-            $questionHasCategory->category_id = $category->id;
+            $questionHasCategory->category_id = $singleCategory->id;
             $questionHasCategory->save();
         }
 
