@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\category;
 use App\Models\question;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class QuestionController extends Controller
 {
@@ -14,7 +16,22 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        //
+
+    // find question where mycategoryId == Question_category_id match;
+
+        if(!Auth::check()){
+            $allQuestions = question::all();
+            return $allQuestions;
+        } else{
+
+            $allQuestions = question::all();
+
+
+
+        }
+
+
+        return view('question.index',compact('allQuestions'));
     }
 
     /**
@@ -24,7 +41,8 @@ class QuestionController extends Controller
      */
     public function create()
     {
-        //
+        $categories = category::all();
+        return view('question.addQuestion', compact('categories'));
     }
 
     /**
@@ -35,7 +53,47 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required'
+        ]);
+
+
+        $question = new question;
+
+        if(!Auth::check()){
+            $question->user_id = null;
+        }else{
+            $question->user_id = auth()->user()->id;
+        }
+
+        if(!is_null($request->image)){
+            $request->validate([
+                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            ]);
+
+            $imagefullName = time() . $request->image->getClientOriginalName();
+            $request->image->move(public_path('images/question'), $imagefullName);
+
+            // have to resize the image ration and size
+            $question->image = $imagefullName;
+
+        }
+
+
+
+       $question->title = $request->title;
+       $question->description = $request->description;
+       $question->category_id = json_encode($request->category);
+
+
+       $question->save();
+
+       return redirect()->back()->withSucess('Question Placed, We Will Ensure Your Best Answer');
+
+
     }
 
     /**

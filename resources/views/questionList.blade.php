@@ -36,10 +36,10 @@
                                     <a href="#"><i class="fas fa-heart"></i> </a> <span>89</span>
                                     <a href=""><i class="fas fa-thumbs-down"></i> </a>
                                     <span>12</span>
-                                    
+
                                     <i class="fas fa-calendar-week"></i>
                                     <span>01-02-02003</span>
-                                
+
                                 </div> -->
                                 <div class="ans_body_content">
                                     <p>The biggest piece of advice I could give is to take a course in
@@ -105,7 +105,7 @@
                                        <span>01-02-02003</span>
 
                                    </div> -->
-                                <div class="ans_body_content">
+                                <div class="ans_body_content text-dark">
                                     <p>The biggest piece of advice I could give is to take a course in
                                         microeconometrics/labour econometrics as a part of your course. If your
                                         course
@@ -186,9 +186,9 @@
                                    <textarea class="form-control" id="validationDefault03" rows="5" required></textarea>
                                </div>
                            </div>
-                       
-                          
-                           
+
+
+
                            <div class="col-12">
                                <div class="form-check">
                                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
